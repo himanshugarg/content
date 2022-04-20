@@ -313,22 +313,22 @@ Let's open `src/index.js`, because that's where the `App` component is being use
 
 ```js
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
 ```
 
 As with `App.js`, the file starts by importing all the JS modules and other assets it needs to run. `src/index.css` holds global styles that are applied to our whole app. We can also see our `App` component imported here; it is made available for import thanks to the `export` statement at the bottom of `App.js`.
@@ -342,7 +342,7 @@ All of this tells React that we want to render our React application with the `A
 
 > **Note:** In JSX, React components and HTML elements must have closing slashes. Writing just `<App>` or just `<img>` will cause an error.
 
-[Service workers](/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers) are interesting pieces of code that help application performance and allow features of your web applications to work offline, but they're not in scope for this article. You can delete line 5, as well as most of the code below it.
+The [reportWebVitals()](https://create-react-app.dev/docs/measuring-performance) function allows you to measure the performance of your web page on the user's device, but it is not in scope for this article. You can delete line 5, as well as most of the code below it.
 
 Your final `index.js` file should look like this:
 
