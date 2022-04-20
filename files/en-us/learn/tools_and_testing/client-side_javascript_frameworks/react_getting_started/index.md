@@ -238,7 +238,6 @@ The `App.js` file consists of three main parts: some [`import`](/en-US/docs/Web/
 The `import` statements at the top of the file allow `App.js` to use code that has been defined elsewhere. Let's look at these statements more closely.
 
 ```js
-import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 ```
@@ -331,12 +330,13 @@ root.render(
 reportWebVitals();
 ```
 
-As with `App.js`, the file starts by importing all the JS modules and other assets it needs to run. `src/index.css` holds global styles that are applied to our whole app. We can also see our `App` component imported here; it is made available for import thanks to the `export` statement at the bottom of `App.js`.
+As with `App.js`, the file starts by importing all the JS modules and other assets it needs to run. 
 
-Line 7 calls React's `ReactDOM.render()` function with two arguments:
+The first two statements import the React and ReactDOM libraries because they are referenced later in the file. We don't write a path or extension when importing the `React` or `ReactDOM` modules — these are not local files; instead, these are listed as a dependency in our `package.json` file. Be careful of this distinction as you work through this lesson!
 
-- The component we want to render, `<App />` in this case.
-- The DOM element inside which we want the component to be rendered, in this case the element with an ID of `root`. If you look inside `public/index.html`, you'll see that this is a `<div>` element just inside the `<body>`.
+`src/index.css` holds global styles that are applied to our whole app. We can also see our `App` component imported here; it is made available for import thanks to the `export` statement at the bottom of `App.js`.
+
+Line 7 calls React's `ReactDOM.createRoot()` function with the DOM element inside which we want the component to be rendered, in this case the element with an ID of `root`. If you look inside `public/index.html`, you'll see that this is a `<div>` element just inside the `<body>`.
 
 All of this tells React that we want to render our React application with the `App` component as the root, or first component.
 
