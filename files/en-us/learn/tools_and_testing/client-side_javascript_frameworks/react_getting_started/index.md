@@ -332,11 +332,13 @@ reportWebVitals();
 
 As with `App.js`, the file starts by importing all the JS modules and other assets it needs to run. 
 
-The first two statements import the React and ReactDOM libraries because they are referenced later in the file. We don't write a path or extension when importing the `React` or `ReactDOM` modules — these are not local files; instead, these are listed as a dependency in our `package.json` file. Be careful of this distinction as you work through this lesson!
+The first two statements import the React and ReactDOM libraries because they are referenced later in the file. We don't write a path or extension when importing the `React` or `ReactDOM` modules — these are not local files; instead, these are listed as dependencies in our `package.json` file. Be careful of this distinction as you work through this lesson!
 
 `src/index.css` holds global styles that are applied to our whole app. We can also see our `App` component imported here; it is made available for import thanks to the `export` statement at the bottom of `App.js`.
 
-Line 7 calls React's `ReactDOM.createRoot()` function with the DOM element inside which we want the component to be rendered, in this case the element with an ID of `root`. If you look inside `public/index.html`, you'll see that this is a `<div>` element just inside the `<body>`.
+Line 7 calls React's `ReactDOM.createRoot()` function with the DOM element inside which we want the component to be rendered, in this case the element with an ID of `root`. If you look inside `public/index.html`, you'll see that this is a `<div>` element just inside the `<body>`. The function returns the `root` which we can use to `render` a React element into the DOM.
+
+Line 8 calls `root.render()` with the component we want to render, `<App />` in this case.
 
 All of this tells React that we want to render our React application with the `App` component as the root, or first component.
 
@@ -348,11 +350,14 @@ Your final `index.js` file should look like this:
 
 ```js
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+import React from 'react';
 ```
 
 ## Variables and props
@@ -361,7 +366,7 @@ Next, we'll use a few of our JavaScript skills to get a bit more comfortable edi
 
 ### Variables in JSX
 
-Back in `App.js`, let's focus on line 9:
+Back in `App.js`, let's focus on line 8:
 
 ```js
 <img src={logo} className="App-logo" alt="logo" />
@@ -418,7 +423,7 @@ Let's open `index.js` and give our `<App/>` call its first prop.
 Add a prop of `subject` to the `<App/>` component call, with a value of `Clarice`. When you are done, your code should look something like this:
 
 ```js
-ReactDOM.render(<App subject="Clarice" />, document.getElementById('root'));
+root.render(<App subject="Clarice" />);
 ```
 
 Back in `App.js`, let's revisit the App function itself, which reads like this (with the `return` statement shortened for brevity):
