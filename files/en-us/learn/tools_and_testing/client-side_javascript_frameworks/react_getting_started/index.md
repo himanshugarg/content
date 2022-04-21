@@ -204,7 +204,6 @@ In React, a **component** is a reusable module that renders a part of our app. T
 Let's open `src/App.js`, since our browser is prompting us to edit it. This file contains our first component, `App`, and a few other lines of code:
 
 ```js
-import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -242,13 +241,9 @@ import logo from './logo.svg';
 import './App.css';
 ```
 
-The first statement imports the React library itself. Because React turns the JSX we write into `React.createElement()`, all React components must import the `React` module. If you skip this step, your application will produce an error.
+The first statement imports a logo from `'./logo.svg'`. Note the use of `./` at the beginning of the path, and the `.svg` extension at the end — these tell us that the file is local and that it is not a JavaScript file. Indeed, the `logo.svg` file lives in our source directory.
 
-The second statement imports a logo from `'./logo.svg'`. Note the use of `./` at the beginning of the path, and the `.svg` extension at the end — these tell us that the file is local and that it is not a JavaScript file. Indeed, the `logo.svg` file lives in our source directory.
-
-We don't write a path or extension when importing the `React` module — this is not a local file; instead, it is listed as a dependency in our `package.json` file. Be careful of this distinction as you work through this lesson!
-
-The third statement imports the CSS related to our App component. Note that there is no variable name and no `from` directive. This particular import syntax is not native to JavaScript module syntax — it comes from Webpack, the tool create-react-app uses to bundle all our JavaScript files together and serve them to the browser.
+The next statement imports the CSS related to our App component. Note that there is no variable name and no `from` directive. This particular import syntax is not native to JavaScript module syntax — it comes from Webpack, the tool create-react-app uses to bundle all our JavaScript files together and serve them to the browser.
 
 ### The `App` component
 
@@ -353,7 +348,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
